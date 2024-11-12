@@ -27,10 +27,10 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Teleporter")
 	ATeleporter* DestinationTeleporter;
 
-	UPROPERTY(EditAnywhere, Category = "Components")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
 	UParticleSystemComponent* TeleportEffect;
 
-	UPROPERTY(EditAnywhere, Category = "Components")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
 	UAudioComponent* TeleportSound;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Teleporter")

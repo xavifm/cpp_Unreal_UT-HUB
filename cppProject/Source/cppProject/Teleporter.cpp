@@ -27,6 +27,21 @@ ATeleporter::ATeleporter()
 void ATeleporter::BeginPlay()
 {
 	Super::BeginPlay();
+
+    TArray<USceneComponent*> children;
+    Children.Empty();
+    RootComponent->GetChildrenComponents(true, children);
+
+    for (USceneComponent* Child : children)
+    {
+        UAudioComponent* audioComponent = Cast<UAudioComponent>(Child);
+        UParticleSystemComponent* particleComponent = Cast<UParticleSystemComponent>(Child);
+
+        if (audioComponent)
+            TeleportSound = audioComponent;
+        if (particleComponent)
+            TeleportEffect = particleComponent;
+    }
 }
 
 void ATeleporter::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
